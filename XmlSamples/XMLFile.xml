@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Users>
+	<User>
+		<USER_ID>1</USER_ID>
+		<USER_NAME>Furkan</USER_NAME>
+		<USER_EMAIL>furkancoskunn96@gmail.com</USER_EMAIL>
+		<USER_REGISTER_DATE>"2022-05-10"</USER_REGISTER_DATE>
+		<USER_IS_ACTIVE>1</USER_IS_ACTIVE>
+	</User>
+	<User>
+		<USER_ID>2</USER_ID>
+		<USER_NAME>Tatar</USER_NAME>
+		<USER_EMAIL>tatarokan@gmail.com</USER_EMAIL>
+		<USER_REGISTER_DATE>"1955-01-10"</USER_REGISTER_DATE>
+		<USER_IS_ACTIVE>0</USER_IS_ACTIVE>
+	</User>
+</Users>
+
+
+

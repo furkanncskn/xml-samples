@@ -1,0 +1,7 @@
+User
+USER_ID: 2
+USER_NAME: furkanncskn96
+USER_PASSWORD: aZ******************
+USER_EMAIL: furkancoskunn96@gmail.com
+USER_REGISTER_DATE: 1.01.1900 00:00:00
+USER_IS_ACTIVE: True
