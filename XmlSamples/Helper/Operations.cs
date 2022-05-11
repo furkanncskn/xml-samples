@@ -6,10 +6,10 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Serialization;
 
-namespace XmlSamples
+namespace XmlSamples.Helper
 {
-
     public class Operations
     {
         private static readonly string connectionString = @"
@@ -206,6 +206,44 @@ namespace XmlSamples
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return string.Empty;
+            }
+        }
+
+        public static void XmlSerialize<T>(T instance, string fileName) where T : class, new()
+        {
+            try
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(T));
+
+                using (XmlWriter writer = XmlWriter.Create(fileName))
+                {
+                    serializer.Serialize(writer, instance);
+                };
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static T? XmlDeSerialize<T>(string fileName) where T : class, new()
+        {
+            try
+            {
+                using (XmlReader reader = XmlReader.Create(fileName))
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(T));
+
+                    if (serializer == null) throw new NullReferenceException();
+
+                    return (T?)serializer.Deserialize(reader);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return null;
             }
         }
     }
