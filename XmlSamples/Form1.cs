@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace XmlSamples
@@ -14,36 +15,36 @@ namespace XmlSamples
         private void BtnWriteToFile_Click(object sender, System.EventArgs e)
         {
             File.WriteAllText(
-                    path: Operations.CreateFileWithDialog(),
-                    contents: Operations.FromXmlToString(uri: Operations.SelectWithOpenFileDialog())
+                    path: Helper.Operations.CreateFileWithDialog(),
+                    contents: Helper.Operations.FromXmlToString(uri: Helper.Operations.SelectWithOpenFileDialog())
                 );
         }
 
         private void BtnPrettierWriteToFile_Click(object sender, System.EventArgs e)
         {
             File.WriteAllText(
-                    path: Operations.CreateFileWithDialog(),
-                    contents: Operations.PrettierFromXmlToString(uri: Operations.SelectWithOpenFileDialog())
+                    path: Helper.Operations.CreateFileWithDialog(),
+                    contents: Helper.Operations.PrettierFromXmlToString(uri: Helper.Operations.SelectWithOpenFileDialog())
                 );
         }
 
         private void BtnFillGrid_Click(object sender, System.EventArgs e)
         {
-            var data = Operations.FromXmlToDataSet(uri: Operations.SelectWithOpenFileDialog());
+            var data = Helper.Operations.FromXmlToDataSet(uri: Helper.Operations.SelectWithOpenFileDialog());
 
             TestDataGrid.DataSource = data.Tables[0];
         }
 
         private void BtnWriteToXml_Click(object sender, System.EventArgs e)
         {
-            Operations.FromSqlToXml(fileName: Operations.CreateFileWithDialog());
+            Helper.Operations.FromSqlToXml(fileName: Helper.Operations.CreateFileWithDialog());
         }
 
         private void BtnGetFirstElement_Click(object sender, System.EventArgs e)
         {
             var user = DataAccess.DAL<Entity.User>
                 .FirstElementFromXmlToInstance(
-                        uri: Operations.SelectWithOpenFileDialog()
+                        uri: Helper.Operations.SelectWithOpenFileDialog()
                     );
 
             if (user == null) return;
@@ -51,7 +52,7 @@ namespace XmlSamples
             string str = Helper.Convert.FromObjectToString<Entity.User>(user);
 
             File.WriteAllText(
-                    path: Operations.CreateFileWithDialog(),
+                    path: Helper.Operations.CreateFileWithDialog(),
                     contents: str.ToString()
                 );
 
@@ -68,7 +69,7 @@ namespace XmlSamples
 
                 var user = DataAccess.DAL<Entity.User>.
                     FromXmlToInstanceById(
-                        uri: Operations.SelectWithOpenFileDialog(),
+                        uri: Helper.Operations.SelectWithOpenFileDialog(),
                         id: id
                     );
 
@@ -77,7 +78,7 @@ namespace XmlSamples
                 string str = Helper.Convert.FromObjectToString<Entity.User>(user);
 
                 File.WriteAllText(
-                    path: Operations.CreateFileWithDialog(),
+                    path: Helper.Operations.CreateFileWithDialog(),
                     contents: str.ToString()
                 );
 
@@ -93,14 +94,53 @@ namespace XmlSamples
 
         private void BtmObjectToList_Click(object sender, EventArgs e)
         {
-            var listUsers = Helper.Convert.FromArrayToList<Entity.User>(Entity.DummyData.UserDummyData.users);
+            var listUsers = Helper.Convert.FromArrayToList<Entity.User>(
+                    param: Entity.DummyData.UserDummyData.users
+                );
+
+            StringBuilder str = new();
+
+            listUsers.ForEach(item => str.Append(
+                value: Helper.Convert.FromObjectToString<Entity.User>(item))
+            );
+
+            MessageBox.Show(str.ToString());
         }
 
         private void BtnListToTable_Click(object sender, EventArgs e)
         {
-            var table = Helper.Convert.FromListToDataTable<Entity.User>(Entity.DummyData.UserDummyData.listUsers);
+            TestDataGrid.DataSource = Helper.Convert.FromListToDataTable<Entity.User>(
+                    list: Entity.DummyData.UserDummyData.listUsers
+                );
+        }
 
-            TestDataGrid.DataSource = table;
+        private void BtnXmlSerialize_Click(object sender, EventArgs e)
+        {
+            Helper.Operations.XmlSerialize(
+                    instance: Entity.DummyData.UserDummyData.users[0],
+                    fileName: Helper.Operations.CreateFileWithDialog()
+                );
+        }
+
+        private void BtnXmlDesrialize_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var user = Helper.Operations.XmlDeSerialize<Entity.User>(
+                fileName: Helper.Operations.SelectWithOpenFileDialog());
+
+                if (user == null) { throw new NullReferenceException(); }
+
+                string str = Helper.Convert.FromObjectToString<Entity.User>(user);
+
+                MessageBox.Show(str);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                throw;
+            }
         }
     }
 }

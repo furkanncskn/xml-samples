@@ -38,6 +38,8 @@
             this.TxtId = new System.Windows.Forms.TextBox();
             this.BtmObjectToList = new System.Windows.Forms.Button();
             this.BtnListToTable = new System.Windows.Forms.Button();
+            this.BtnXmlSerialize = new System.Windows.Forms.Button();
+            this.BtnXmlDesrialize = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TestDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,7 +147,7 @@
             this.BtmObjectToList.Name = "BtmObjectToList";
             this.BtmObjectToList.Size = new System.Drawing.Size(251, 41);
             this.BtmObjectToList.TabIndex = 8;
-            this.BtmObjectToList.Text = "FROM OBJECT TO LİST";
+            this.BtmObjectToList.Text = "FROM OBJECT TO LIST";
             this.BtmObjectToList.UseVisualStyleBackColor = true;
             this.BtmObjectToList.Click += new System.EventHandler(this.BtmObjectToList_Click);
             // 
@@ -157,15 +159,41 @@
             this.BtnListToTable.Name = "BtnListToTable";
             this.BtnListToTable.Size = new System.Drawing.Size(251, 41);
             this.BtnListToTable.TabIndex = 9;
-            this.BtnListToTable.Text = "FROM LİST TO TABLE";
+            this.BtnListToTable.Text = "FROM LIST TO TABLE";
             this.BtnListToTable.UseVisualStyleBackColor = true;
             this.BtnListToTable.Click += new System.EventHandler(this.BtnListToTable_Click);
+            // 
+            // BtnXmlSerialize
+            // 
+            this.BtnXmlSerialize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnXmlSerialize.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnXmlSerialize.Location = new System.Drawing.Point(12, 432);
+            this.BtnXmlSerialize.Name = "BtnXmlSerialize";
+            this.BtnXmlSerialize.Size = new System.Drawing.Size(251, 41);
+            this.BtnXmlSerialize.TabIndex = 10;
+            this.BtnXmlSerialize.Text = "XML SERIALIZE";
+            this.BtnXmlSerialize.UseVisualStyleBackColor = true;
+            this.BtnXmlSerialize.Click += new System.EventHandler(this.BtnXmlSerialize_Click);
+            // 
+            // BtnXmlDesrialize
+            // 
+            this.BtnXmlDesrialize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnXmlDesrialize.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnXmlDesrialize.Location = new System.Drawing.Point(12, 479);
+            this.BtnXmlDesrialize.Name = "BtnXmlDesrialize";
+            this.BtnXmlDesrialize.Size = new System.Drawing.Size(251, 41);
+            this.BtnXmlDesrialize.TabIndex = 11;
+            this.BtnXmlDesrialize.Text = "XML DESERIALIZE";
+            this.BtnXmlDesrialize.UseVisualStyleBackColor = true;
+            this.BtnXmlDesrialize.Click += new System.EventHandler(this.BtnXmlDesrialize_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 536);
+            this.Controls.Add(this.BtnXmlDesrialize);
+            this.Controls.Add(this.BtnXmlSerialize);
             this.Controls.Add(this.BtnListToTable);
             this.Controls.Add(this.BtmObjectToList);
             this.Controls.Add(this.TxtId);
@@ -198,5 +226,7 @@
         private System.Windows.Forms.TextBox TxtId;
         private System.Windows.Forms.Button BtmObjectToList;
         private System.Windows.Forms.Button BtnListToTable;
+        private System.Windows.Forms.Button BtnXmlSerialize;
+        private System.Windows.Forms.Button BtnXmlDesrialize;
     }
 }
