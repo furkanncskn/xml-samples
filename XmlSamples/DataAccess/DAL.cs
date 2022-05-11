@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
-using System.Xml.Serialization;
 
 namespace XmlSamples.DataAccess
 {
@@ -57,19 +56,13 @@ namespace XmlSamples.DataAccess
             {
                 Type type = typeof(T);
 
-                PropertyInfo[] properties = type.GetProperties();
+                var properties = type.GetProperties().ToList();
 
                 List<Type> PropertyTypes = properties.Select(x => x.PropertyType).ToList();
 
                 var keyPropertyName = string.Empty;
 
-                foreach (var item in properties)
-                {
-                    if (item.GetCustomAttribute<KeyAttribute>() != null)
-                    {
-                        keyPropertyName = item.Name;
-                    }
-                }
+                properties.ForEach(item => { if (item.GetCustomAttributes<KeyAttribute>().Any()) { keyPropertyName = item.Name; } });
 
                 if (keyPropertyName == string.Empty) throw new Exception("Invalid key propery name");
 
@@ -123,17 +116,6 @@ namespace XmlSamples.DataAccess
             {
                 throw;
             }
-        }
-
-        public static T DeSerializer(XElement element)
-        {
-            var serializer = new XmlSerializer(typeof(T));
-
-            var obje = serializer.Deserialize(element.CreateReader());
-
-            if (obje == null) { throw new NullReferenceException(); }
-
-            return (T)obje;
         }
     }
 }
