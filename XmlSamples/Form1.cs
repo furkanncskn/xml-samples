@@ -90,5 +90,17 @@ namespace XmlSamples
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void BtmObjectToList_Click(object sender, EventArgs e)
+        {
+            var listUsers = Helper.Convert.FromArrayToList<Entity.User>(Entity.DummyData.UserDummyData.users);
+        }
+
+        private void BtnListToTable_Click(object sender, EventArgs e)
+        {
+            var table = Helper.Convert.FromListToDataTable<Entity.User>(Entity.DummyData.UserDummyData.listUsers);
+
+            TestDataGrid.DataSource = table;
+        }
     }
 }

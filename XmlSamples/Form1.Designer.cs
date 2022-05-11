@@ -36,6 +36,8 @@
             this.BtnGetFirstElement = new System.Windows.Forms.Button();
             this.BtnGetUserById = new System.Windows.Forms.Button();
             this.TxtId = new System.Windows.Forms.TextBox();
+            this.BtmObjectToList = new System.Windows.Forms.Button();
+            this.BtnListToTable = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TestDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,6 +67,9 @@
             // 
             // TestDataGrid
             // 
+            this.TestDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TestDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.TestDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.TestDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -125,20 +130,44 @@
             // 
             // TxtId
             // 
-            this.TxtId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtId.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TxtId.Location = new System.Drawing.Point(12, 294);
             this.TxtId.Name = "TxtId";
-            this.TxtId.Size = new System.Drawing.Size(0, 38);
+            this.TxtId.Size = new System.Drawing.Size(251, 38);
             this.TxtId.TabIndex = 7;
             this.TxtId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // BtmObjectToList
+            // 
+            this.BtmObjectToList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtmObjectToList.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtmObjectToList.Location = new System.Drawing.Point(12, 338);
+            this.BtmObjectToList.Name = "BtmObjectToList";
+            this.BtmObjectToList.Size = new System.Drawing.Size(251, 41);
+            this.BtmObjectToList.TabIndex = 8;
+            this.BtmObjectToList.Text = "FROM OBJECT TO LİST";
+            this.BtmObjectToList.UseVisualStyleBackColor = true;
+            this.BtmObjectToList.Click += new System.EventHandler(this.BtmObjectToList_Click);
+            // 
+            // BtnListToTable
+            // 
+            this.BtnListToTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnListToTable.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnListToTable.Location = new System.Drawing.Point(12, 385);
+            this.BtnListToTable.Name = "BtnListToTable";
+            this.BtnListToTable.Size = new System.Drawing.Size(251, 41);
+            this.BtnListToTable.TabIndex = 9;
+            this.BtnListToTable.Text = "FROM LİST TO TABLE";
+            this.BtnListToTable.UseVisualStyleBackColor = true;
+            this.BtnListToTable.Click += new System.EventHandler(this.BtnListToTable_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 536);
+            this.Controls.Add(this.BtnListToTable);
+            this.Controls.Add(this.BtmObjectToList);
             this.Controls.Add(this.TxtId);
             this.Controls.Add(this.BtnGetUserById);
             this.Controls.Add(this.BtnGetFirstElement);
@@ -147,7 +176,7 @@
             this.Controls.Add(this.TestDataGrid);
             this.Controls.Add(this.BtnPrettierWriteToFile);
             this.Controls.Add(this.BtnWriteToFile);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -167,5 +196,7 @@
         private System.Windows.Forms.Button BtnGetFirstElement;
         private System.Windows.Forms.Button BtnGetUserById;
         private System.Windows.Forms.TextBox TxtId;
+        private System.Windows.Forms.Button BtmObjectToList;
+        private System.Windows.Forms.Button BtnListToTable;
     }
 }
